@@ -1,0 +1,50 @@
+﻿
+    <div class="login-cover">
+        <div class="login-cover-image"><img src="/Theme_Template/img/login_bg.jpg" data-id="login-cover-image" alt="" /></div>
+        <div class="login-cover-bg"></div>
+    </div>
+
+    <!-- begin login -->
+    <div class="login login-v2 animated fadeIn">
+    <spinner name="defaultSpinner" img-src="../../../Theme_Template/img/defaultSpinner.gif" class="spinner"></spinner>    
+    <!-- begin brand -->
+    <div class="login-header">
+        <div class="brand move_you_2">
+            <span class="fa fa-bar-chart-o"></span> BudgetPlanner
+        </div>
+    </div>
+    <!-- end brand -->
+    <div class="login-content">
+        <div class="margin-bottom-0">
+            <p class="alert alert-info text-center text-white" ng-if="user.isNew">Please login using your new account.</p>
+            
+            <div class="form-group m-b-20">
+                <input type="text" class="form-control input-lg" placeholder="Email Address" ng-model="user.username" />
+            </div>
+            <div class="form-group m-b-20">
+                <input type="password" class="form-control input-lg" placeholder="Password" ng-model="user.password" />
+            </div>
+            <!--<div class="checkbox m-b-20">
+                <a ui-sref="login.forgot" class="move_you_3">Forgot your password?</a>
+            </div>-->
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                
+                <button type="button" class="btn btn-success btn-block btn-lg" ng-click="user.login()">Login</button>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <a class="btn btn-white btn-block btn-lg " ui-sref="login.register"><span style="color:black">Create Account</span></a>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div  ng-show="user.errors != null">
+                <h5 class="alert alert-warning text-center text-white">{{user.errors.error_description}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- end login -->
+    

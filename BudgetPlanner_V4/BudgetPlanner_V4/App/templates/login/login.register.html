@@ -1,0 +1,54 @@
+﻿<div class="login-cover">
+    <div class="login-cover-image"><img src="/Theme_Template/img/login_bg.jpg" data-id="login-cover-image" alt="" /></div>
+    <div class="login-cover-bg"></div>
+</div>
+
+<!-- begin login -->
+<div class="login login-v2 animated fadeIn">
+    <!-- begin brand -->
+    <div class="login-header">
+        <div class="brand move_you_2">
+            <span class="fa fa-bar-chart-o"></span> BudgetPlanner
+        </div>
+    </div>
+    <!-- end brand -->
+    <div class="login-content">
+        <div class="margin-bottom-0">
+            <div class="form-group m-b-20">
+                <input type="text" class="form-control input-lg" placeholder="Username" ng-model="register.model.DisplayName" />
+            </div>
+            <div class="form-group m-b-20">
+                <input type="text" class="form-control input-lg" placeholder="Email Address" ng-model="register.model.Email" />
+            </div>
+            <div class="form-group m-b-20">
+                <input type="password" class="form-control input-lg" placeholder="Password" ng-model="register.model.Password" />
+            </div>
+            <div class="form-group m-b-20">
+                <input type="password" class="form-control input-lg" placeholder="Confirm Password" ng-model="register.model.ConfirmPassword" />
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <button type="button" class="btn btn-success btn-block btn-lg" ng-click="register.signup(register.model)">Register</button>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <a class="btn btn-white btn-block btn-lg " ui-sref="login.signin"><span style="color:black">Use Existing Account</span></a>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="alert alert-info text-center text-white">
+                <p>Passwords must have at least one non letter ('~!#$' etc.)</p>
+                <p>Passwords must have at least one digit (‘0′-‘9′)</p>
+                <p>Passwords must have at least one uppercase (‘A’-‘Z’)</p>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div ng-show="register.errors != null">
+                <h5 class="alert alert-warning text-center text-white" ng-repeat="error in register.errors.data.ModelState">{{error[0]}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end login -->

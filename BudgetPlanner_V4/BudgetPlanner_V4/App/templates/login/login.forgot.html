@@ -1,0 +1,38 @@
+﻿<div class="login-cover">
+    <div class="login-cover-image"><img src="/Theme_Template/img/login_bg.jpg" data-id="login-cover-image" alt="" /></div>
+    <div class="login-cover-bg"></div>
+</div>
+
+<!-- begin login -->
+<div class="login login-v2" data-pageload-addclass="animated fadeIn">
+    <!-- begin brand -->
+    <div class="login-header">
+        <div class="brand move_you_2">
+            <span class="fa fa-bar-chart-o"></span> BudgetPlanner
+        </div>
+    </div>
+    <!-- end brand -->
+    <div class="login-content">
+        <div class="margin-bottom-0">
+            <div class="form-group m-b-20">
+                <input type="text" class="form-control input-lg" placeholder="Email Address" ng-model="user.username" />
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <button type="button" class="btn btn-success btn-block btn-lg" ng-click="user.sendCode()">Send Code</button>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <a class="btn btn-primary btn-block btn-lg" ui-sref="login.signin">Use Existing Account</a>
+            </div>
+            <div class="m-t-20">
+            </div>
+            <div class="login-buttons">
+                <a class="btn btn-white btn-block btn-lg " ui-sref="login.register"><span style="color:black">Create Account</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end login -->

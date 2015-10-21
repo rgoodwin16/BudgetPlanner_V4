@@ -1,24 +1,187 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    <title>BudgetPlanner - a WebApi powered, Angular application by Ray Goodwin</title>
+
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+
+    @Styles.Render("~/Content/css")
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Theme_Template/css/animate.css" rel="stylesheet" />
+    <link href="~/Theme_Template/css/color_admin.css" rel="stylesheet" />
+    <link href="~/Theme_Template/css/color_admin_responsive.css" rel="stylesheet" />
+    <link href="~/Theme_Template/css/color_admin_default.css" rel="stylesheet" />
+    <link href="~/Scripts/angular-ui-switch/angular-ui-switch.css" rel="stylesheet" />
+    <link href="~/Content/trNgGrid.min.css" rel="stylesheet" />
+    <link href="~/Content/nv.d3.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div ng-app="budget_planner">
+
+        <div ng-controller="layoutCtrl as layout">
+
+            <div ng-hide="layout.$state.includes('login') || layout.$state.includes('home')">
+
+                <nav id="header" class="header navbar navbar-fixed-top navbar-inverse" role="navigation">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- begin mobile sidebar expand / collapse button -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle"
+                                    ng-init="navCollapsed = true"
+                                    ng-click="navCollapsed = !navCollapsed">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a ui-sref="dashboard" class="navbar-brand"><i class="fa fa-bar-chart-o"></i> BudgetPlanner</a>
+                        </div>
+                        <!-- end mobile sidebar expand / collapse button -->
+                        <!-- begin header navigation right -->
+                        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+                            <ul class="nav navbar-nav hidden-md hidden-lg hidden-sm">
+                                <li>
+                                    <a ui-sref="dashboard"><i class="fa fa-laptop"></i> Dashboard</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="household.details"><i class="fa fa-home"></i> Household</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="accounts.list"><i class="fa fa-university"></i> Accounts</a>
+                                </li>
+                                <li>
+                                    <a ui-sref="budget.list"><i class="fa fa-pie-chart"></i> Budget</a>
+                                </li>
+                                <li>
+                                    <a href ng-click="layout.logout()"><i class="fa fa-sign-out"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- end header navigation right -->
+                    </div>
+                    <!-- end container-fluid -->
+
+                </nav><!-- /header -->
+                <!-- begin #sidebar -->
+                <div id="sidebar" class="sidebar sidebar-grid">
+                    <!-- begin sidebar scrollbar -->
+                    <div>
+
+                        <!-- begin sidebar nav -->
+                        <ul class="nav">
+                            <li class="nav-header">Navigation</li>
+                            <li class="has-sub">
+                                <a ui-sref="dashboard">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a class="auto" ui-sref="household.details">
+
+                                    <i class="fa fa-home"></i>
+                                    <span>Household</span>
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a ui-sref="accounts.list">
+                                    <i class="fa fa-university"></i>
+                                    <span>Accounts</span>
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a ui-sref="budget.list">
+                                    <i class="fa fa-pie-chart"></i>
+                                    <span>Budget</span>
+                                </a>
+                            </li>
+                            <li class="nav-header">User</li>
+                            <li class="has-sub">
+                                <a ui-sref="user_manage">
+                                    <i class="fa fa-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li class="has-sub">
+                                <a href ng-click="layout.logout()">
+                                    <i class="fa fa-sign-out"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                            <li class="nav-header">Developed by:</li>
+                            <li>
+                                <a href="https://rgoodwin.azurewebsites.net">
+                                    <img src="~/Theme_Template/img/ray_goodwin_lg.png" width="190" height="36" />
+                                </a>
+                            </li>
+                            <li class="nav-header">Instructed by:</li>
+                            <li>
+                                <a href="http://coderfoundry.com">
+                                    <img src="~/Theme_Template/img/coder.png" />
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- end sidebar nav -->
+                    </div>
+                    <!-- end sidebar scrollbar -->
+                </div>
+                <div class="sidebar-bg"></div>
+                <!-- end #sidebar -->
+
+            </div><!-- /ng-hide (login | household_begin) -->
+
+            <div ui-view></div><!-- main ui-view -->
+
+        </div><!-- /layoutCtrl -->
+
+    </div><!-- / ng-app -->
+
+    <!-- graphs -->
+    <script src="~/Scripts/d3/d3.min.js"></script>
+    <script src="~/Scripts/nv.d3.min.js"></script>
+    
+    <!-- Begin Angular -->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
+    <script src="~/Scripts/angular-local-storage.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <script src="~/Scripts/trNgGrid.min.js"></script>
+    <script src="~/Scripts/angular-nvd3.min.js"></script>
+    <script src="~/Scripts/angular-spinners/angular-spinners.js"></script>
+
+
+    <!-- Main App -->
+    <script src="~/App/app.js"></script>
+
+    <!-- Begin Services -->
+
+    <!-- Auth -->
+    <script src="~/App/services/auth/authSvc.js"></script>
+    <script src="~/App/services/auth/authInterceptorSvc.js"></script>
+
+    <!-- Begin Controllers -->
+
+    <!-- layout -->
+    <script src="~/App/controllers/layout/layoutCtrl.js"></script>
+    <!-- login -->
+    <script src="~/App/controllers/login/loginCtrl.js"></script>
+    <script src="~/App/controllers/login/registerCtrl.js"></script>
+
+    
+
+</body>
+</html>

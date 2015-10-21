@@ -6,8 +6,7 @@ Website: http://www.seantheme.com/color-admin-v1.8/admin/
 */
 
 body {
-    /*background: #2c2c2d;*/
-    /*background-image:url(../img/login_bg.jpg);*/
+    background-image:url(../img/login_bg.jpg);
     font-size: 12px;
     font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #707478
@@ -98,6 +97,7 @@ label {
     bottom: 0;
     right: 0;
     background: #E6E8EC;
+    opacity: .5;
     z-index: 1020
 }
 #page-loader.fade {
@@ -140,15 +140,15 @@ label {
 }
 .spinner,
 .spinner-small {
-    /*height: 40px;
-    width: 40px;*/
+    height: 40px;
+    width: 40px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: -20px -20px 0 0;
-    /*border: 2px solid #fff;
-    border-top: 2px solid #24B498;*/
-    /*border-radius: 100%*/
+    border: 2px solid #fff;
+    border-top: 2px solid #24B498;
+    border-radius: 100%
 }
 .fade.in .spinner,
 .fade.in .spinner-small {

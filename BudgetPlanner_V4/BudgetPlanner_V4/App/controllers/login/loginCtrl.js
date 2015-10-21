@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('budget_planner').controller('loginCtrl', ['authSvc', '$state', '$stateParams','spinnerService',  function (authSvc, $state, $stateParams,spinnerService) {
+angular.module('budget_planner').controller('loginCtrl', ['authSvc', '$state', '$stateParams', function (authSvc, $state, $stateParams) {
     var self = this;
 
     self.username = '';
@@ -9,12 +9,9 @@ angular.module('budget_planner').controller('loginCtrl', ['authSvc', '$state', '
 
     //LOGIN FORM SUBMIT - EXISTING USER
     self.login = function () {
-        spinnerService.show('defaultSpinner');
         authSvc.login(self.username, self.password).then(function (success) {
-            spinnerService.hide('defaultSpinner');
-            $state.go('dashboard');
+            $state.go('household_begin');
         }, function (error) {
-            spinnerService.hide('defaultSpinner');
             self.errors = error;
         });
     }

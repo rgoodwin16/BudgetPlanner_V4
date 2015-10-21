@@ -213,6 +213,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BudgetItemsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseholdAccountsController.cs" />
     <Compile Include="Controllers\HouseholdController.cs" />
@@ -245,12 +246,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\controllers\dashboard\dashboardCtrl.js" />
+    <Content Include="App\controllers\household\householdBeginCtrl.js" />
+    <Content Include="App\controllers\household\householdDetailsCtrl.js" />
+    <Content Include="App\controllers\household\householdCtrl.js" />
     <Content Include="App\controllers\layout\layoutCtrl.js" />
     <Content Include="App\controllers\login\loginCtrl.js" />
     <Content Include="App\controllers\login\registerCtrl.js" />
     <Content Include="App\filters\errorRegEx.js" />
     <Content Include="App\services\auth\authInterceptorSvc.js" />
     <Content Include="App\services\auth\authSvc.js" />
+    <Content Include="App\services\budget_item\budgetItemSvc.js" />
+    <Content Include="App\services\dashboard\dashboardSvc.js" />
+    <Content Include="App\services\household\householdSvc.js" />
+    <Content Include="App\services\household_account\householdAccountSvc.js" />
+    <Content Include="App\services\transaction\transactionSvc.js" />
+    <Content Include="App\templates\dashboard\dashboard.html" />
+    <Content Include="App\templates\household\household.begin.html" />
+    <Content Include="App\templates\household\household.details.html" />
+    <Content Include="App\templates\household\household.html" />
     <Content Include="App\templates\login\login.forgot.html" />
     <Content Include="App\templates\login\login.html" />
     <Content Include="App\templates\login\login.register.html" />
@@ -279,6 +293,8 @@
     <Content Include="Scripts\angular-csp.css" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
+    <Content Include="Scripts\angular-loading-bar\loading-bar.css" />
+    <Content Include="Scripts\angular-loading-bar\loading-bar.js" />
     <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\angular-message-format.js" />
     <Content Include="Scripts\angular-message-format.min.js" />

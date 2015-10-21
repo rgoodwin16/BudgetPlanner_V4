@@ -1,4 +1,4 @@
-﻿var app = angular.module('budget_planner', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'uiSwitch', 'trNgGrid', 'nvd3', 'angularSpinners']);
+﻿var app = angular.module('budget_planner', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'uiSwitch', 'trNgGrid', 'nvd3', 'angular-loading-bar']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     //
@@ -57,64 +57,64 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 ////=================================================================================//
 
-//        //DASHBOARD STATES
-//      .state('dashboard', {
-//          url: "/dashboard",
-//          templateUrl: "/app/templates/dashboard.html",
-//          controller: "dashboardCtrl as dashboard",
-//          resolve: {
-//              currentMonth: function (dashboardSvc) {
-//                  console.log('resolving')
-//                  return dashboardSvc.dates();
-//              },
-//              currentValues: function (dashboardSvc) {
-//                  return dashboardSvc.cValues();
-//              },
-//              yearlyValues: function (dashboardSvc) {
-//                  return dashboardSvc.yValues();
-//              },
-//              account: function (houseAccountSvc) {
-//                  return houseAccountSvc.list();
-//              },
-//              transactions: function (transactionSvc) {
-//                  return transactionSvc.recent();
-//              }
-//          },
-//          data: {
-//              requiresHousehold: true
-//          }
-//      })
+       //DASHBOARD STATES
+        .state('dashboard', {
+            url: "/dashboard",
+            templateurl: "/app/templates/dashboard/dashboard.html",
+            controller: "dashboardCtrl as dashboard",
+            resolve: {
+                currentmonth: function (dashboardsvc) {
+                    console.log('resolving')
+                    return dashboardsvc.dates();
+                },
+                currentvalues: function (dashboardsvc) {
+                    return dashboardsvc.cvalues();
+                },
+                yearlyvalues: function (dashboardsvc) {
+                    return dashboardsvc.yvalues();
+                },
+                account: function (houseaccountsvc) {
+                    return houseaccountsvc.list();
+                },
+                transactions: function (transactionsvc) {
+                    return transactionsvc.recent();
+                }
+            },
+            data: {
+                requireshousehold: true
+            }
+        })
 ////=================================================================================//
 
-//        //HOUSEHOLD STATES
-//      .state('household', {
-//          url: "/household",
-//          templateUrl: "/app/templates/household/household.html",
-//          abstract: true,
-//          controller: 'houseCtrl as house'
-//      })
-//      .state('household.details', {
-//          url: "",
-//          templateUrl: "/app/templates/household/household.details.html",
-//          resolve: {
-//              household: function (houseSvc) {
-//                  return houseSvc.details();
-//              }
-//          },
-//          data: {
-//              requiresHousehold : true
-//          },
-//          controller: "houseDetailsCtrl as houseDetails",
-//      })
+       //HOUSEHOLD STATES
+      .state('household', {
+          url: "/household",
+          templateUrl: "/app/templates/household/household.html",
+          abstract: true,
+          controller: 'householdCtrl as house'
+      })
+      .state('household.details', {
+          url: "",
+          templateUrl: "/app/templates/household/household.details.html",
+          resolve: {
+              household: function (houseSvc) {
+                  return houseSvc.details();
+              }
+          },
+          data: {
+              requiresHousehold : true
+          },
+          controller: "houseDetailsCtrl as houseDetails",
+      })
 
 ////=================================================================================//
 
-//        //HOUSEHOLD BEGIN
-//        .state('household_begin', {
-//            url: "/household_begin",
-//            templateUrl: "/app/templates/household/household.begin.html",
-//            controller: "householdBeginCtrl as houseBegin",
-//        })
+       //HOUSEHOLD BEGIN
+        .state('household_begin', {
+            url: "/household_begin",
+            templateUrl: "/app/templates/household/household.begin.html",
+            controller: "householdBeginCtrl as houseBegin",
+        })
 
 ////=================================================================================//
 

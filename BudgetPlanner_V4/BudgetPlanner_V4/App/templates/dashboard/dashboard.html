@@ -1,0 +1,130 @@
+﻿<div>
+    <div class="move_you_4">
+    </div>
+    <div id="content" class="content">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="invoice">
+                    <div class="invoice-company">
+                        <span class="panel-heading-btn">
+                            <a class="btn btn-sm btn-success m-b-10" ng-click="dashboard.selectDates()" ng-show="dashboard.currentpanel == 'c'"><i class="fa fa-calendar"></i> Select Dates</a>
+                            <a class="btn btn-sm btn-success m-b-10" ng-click="dashboard.clear()" ng-show="dashboard.currentpanel == 'u'"><i class="fa fa-calendar"></i> Current Month</a>
+                        </span>
+                        <span ng-show="dashboard.currentpanel == 'c'">Current Month Spending - {{dashboard.dates.BeginMonth | date:'mediumDate'}} - {{dashboard.dates.EndMonth | date:'mediumDate'}}</span>
+                        <span ng-show="dashboard.currentpanel == 'u'">Choose a range of dates</span>
+                    </div>
+                    <div class="invoice-content">
+                        <hr />
+                        <div class="col-md-10 col-md-offset-1" ng-show="dashboard.currentpanel == 'c'">
+                            <nvd3 options="dashboard.currentOptions" data="dashboard.currentValues" style="width:100% !important"></nvd3><!-- /current month chart -->
+                        </div>
+
+                        <div class="input-group input-daterange" ng-show="dashboard.currentpanel == 'u'">
+
+                            <input type="date" class="form-control" id="start" ng-model="dashboard.model.startDate">
+                            <span class="input-group-addon">to</span>
+
+                            <input type="date" class="form-control" end="end" ng-model="dashboard.model.endDate">
+                        </div><!-- /date range selector -->
+
+                        <div class="m-t-20" ng-show="dashboard.currentpanel == 'u'">
+                        </div>
+
+                        <div class="col-md-10 col-md-offset-1" ng-show="dashboard.currentpanel == 'u'">
+                            <nvd3 options="dashboard.selectedOptions" data="dashboard.selectedValues" style="width:100% !important"></nvd3><!-- /user selected chart -->
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="m-t-20">
+                        </div>
+
+                        <button type="button" class="btn btn-success" ng-click="dashboard.createChart()" ng-show="dashboard.currentpanel == 'u'">Create Chart</button>
+
+                    </div>
+                </div><!-- /current month spending -->
+
+                <br />
+
+                <div class="invoice">
+                    <div class="invoice-company">
+                        Yearly Spending - {{dashboard.dates.BeginYear | date:'mediumDate'}} - {{dashboard.dates.EndYear | date:'mediumDate'}}
+                    </div>
+                    <div class="invoice-content">
+                        <hr />
+                        <div class="col-md-10 col-md-offset-1">
+                            <nvd3 options="dashboard.yearlyOptions" data="dashboard.yearlyValues" style="width:100% !important"></nvd3>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="m-t-20">
+                        </div>
+                    </div>
+                </div><!-- /yearly spending -->
+
+            </div><!-- /left column -->
+
+            <br class="hidden-md hidden-lg" />
+
+            <div class="col-md-6">
+
+                <div class="invoice">
+                    <div class="invoice-company">
+                        Accounts
+                    </div>
+                    <div class="invoice-content">
+                        <hr />
+                        <table class="table table-responsive table-striped table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="account in dashboard.account.Accounts">
+                                    <td>{{account.Name}}</td>
+                                    <td>
+                                        {{account.Balance | currency}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /account list -->
+
+                <br />
+
+                <div class="invoice">
+                    <div class="invoice-company">
+                        Recent Transactions
+                    </div>
+                    <div class="invoice-content">
+                        <hr />
+
+                        <table tr-ng-grid="" items="dashboard.transactions" page-items="10" class="table-striped">
+                            <thead>
+                                <tr>
+                                    <th field-name="TransactionDesc" enable-sorting="true" display-name="Description" display-align="center" enable-filtering="false"></th>
+                                    <th field-name="TransactionAmount" enable-sorting="true" display-name="Amount" display-align="center" enable-filtering="false" display-format="currency"></th>
+                                    <th field-name="TransactionCategory" enable-sorting="true" display-name="Category" display-align="center" enable-filtering="false"></th>
+                                    <th field-name="TransactionCreated" enable-sorting="true" display-name="Created" display-align="center" enable-filtering="false" display-format="date:'mediumDate'"></th>
+                                    <th field-name="AccountName" enable-sorting="true" display-name="Account Name" display-align="center" enable-filtering="false"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div><!-- /recent transactions -->
+
+            </div><!-- /right column -->
+
+        </div><!-- /row -->
+
+
+
+
+    </div>
+</div>
+<!-- /content -->

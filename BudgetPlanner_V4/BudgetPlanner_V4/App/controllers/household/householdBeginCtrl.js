@@ -5,25 +5,32 @@ angular.module('budget_planner').controller('householdBeginCtrl', ['authSvc', '$
 
     this.name = '';
     this.model = {};
+    this.createErrors = null;
+    this.joinErrors = null;
+    
 
     //CREATE HOUSEHOLD
     this.create = function () {
-        householdSvc.create(self.name).then(function (result) {
-            authSvc.refresh().then(function (response) {
-                $state.go($state.current, null, { reload: true })
-                $state.go('budget.list');
-            })
-        })
-    }
-
-    //JOIN HOUSEHOLD
-    this.join = function () {
-        householdSvc.join(self.model).then(function (result) {
+        householdSvc.create(self.name).then(function (success) {
             authSvc.refresh().then(function (response) {
                 $state.go($state.current, null, { reload: true })
                 $state.go('household.details');
             })
-        })
+        }, function (error) {
+            self.createErrors = error;
+        });
+    }
+
+    //JOIN HOUSEHOLD
+    this.join = function () {
+        householdSvc.join(self.model).then(function (success) {
+            authSvc.refresh().then(function (response) {
+                $state.go($state.current, null, { reload: true })
+                $state.go('household.details');
+            })
+        }, function (error) {
+            self.joinErrors = error;
+        });
     }
 
 }])

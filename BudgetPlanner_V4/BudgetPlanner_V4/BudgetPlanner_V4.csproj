@@ -261,6 +261,7 @@
     <Content Include="App\services\household\householdSvc.js" />
     <Content Include="App\services\household_account\householdAccountSvc.js" />
     <Content Include="App\services\transaction\transactionSvc.js" />
+    <Content Include="App\services\validation\validationSvc.js" />
     <Content Include="App\templates\dashboard\dashboard.html" />
     <Content Include="App\templates\household\household.begin.html" />
     <Content Include="App\templates\household\household.details.html" />

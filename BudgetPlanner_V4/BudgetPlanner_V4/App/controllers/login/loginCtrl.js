@@ -10,7 +10,7 @@ angular.module('budget_planner').controller('loginCtrl', ['authSvc', '$state', '
     //LOGIN FORM SUBMIT - EXISTING USER
     self.login = function () {
         authSvc.login(self.username, self.password).then(function (success) {
-            $state.go('household_begin');
+            $state.go('household.details');
         }, function (error) {
             self.errors = error;
         });

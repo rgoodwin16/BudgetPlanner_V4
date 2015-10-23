@@ -91,20 +91,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           url: "/household",
           templateUrl: "/app/templates/household/household.html",
           abstract: true,
-          controller: 'householdCtrl as house'
+          //controller: 'householdCtrl as house'
       })
       .state('household.details', {
           url: "",
           templateUrl: "/app/templates/household/household.details.html",
           resolve: {
-              household: function (houseSvc) {
-                  return houseSvc.details();
+              household: function (householdSvc) {
+                  return householdSvc.details();
               }
           },
           data: {
               requiresHousehold : true
           },
-          controller: "houseDetailsCtrl as houseDetails",
+          controller: "householdDetailsCtrl as householdDetails",
       })
 
 ////=================================================================================//
@@ -113,7 +113,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('household_begin', {
             url: "/household_begin",
             templateUrl: "/app/templates/household/household.begin.html",
-            controller: "householdBeginCtrl as houseBegin",
+            controller: "householdBeginCtrl as householdBegin",
         })
 
 ////=================================================================================//
@@ -218,8 +218,9 @@ app.run(['$rootScope','$state','$stateParams','authSvc', function ($rootScope,$s
 
         if (toState.data && toState.data.requiresHousehold === true) {
             if (!authService.authentication.isAuth) {
-                event.preventDefault();
+                //event.preventDefault();
                 $state.go('login');
+                console.log('problem')
             }
             if (authService.authentication.householdId == null ||
                 authService.authentication.householdId == "") {

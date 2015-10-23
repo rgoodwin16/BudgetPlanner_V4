@@ -4,13 +4,13 @@
         var f = {};
 
         f.details = function () {
-            return $http.post('api/Household').then(function (response) {
+            return $http.post('api/Household/Details').then(function (response) {
                 return response.data
             })
         }
 
         f.create = function (name) {
-            return $http.post('api/Household/Create?name=' + name).then(function (resposne) {
+            return $http.post('api/Household/Create?name=' + name).then(function (response) {
                 return response.data
             })
         }
@@ -23,7 +23,7 @@
 
         f.join = function (model) {
             return $http.post('api/Household/Join', model).then(function (response) {
-                return respose.data
+                return response.data
             })
         }
 

@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('budget_planner').controller('dashboardCtrl', ['$state', '$http', 'dashboardSvc', 'currentMonth', 'currentValues', 'yearlyValues', 'account', 'transactions', function ($state, $http, dashboardSvc, currentMonth, currentValues, yearlyValues, account, transactions) {
+angular.module('budget_planner').controller('dashboardCtrl', ['$state', 'dashboardSvc', 'currentMonth', 'currentValues', 'yearlyValues', 'account', 'transactions', function ($state, dashboardSvc, currentMonth, currentValues, yearlyValues, account, transactions) {
 
     var self = this;
 

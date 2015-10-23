@@ -1,13 +1,13 @@
-﻿<div class="row">
+﻿<div class="col-lg-8 col-lg-offset-0">
     <div class="invoice">
         <div class="invoice-company">
             <span class="pull-right hidden-print">
-                <a class="btn btn-sm btn-success m-b-10" ng-click="householdDetails.beginInvite()"><i class="fa fa-plus m-r-5"></i> New Invite</a>
-                <a class="btn btn-sm btn-warning m-b-10" ng-click="householdDetails.confirmLeave()"><i class="fa fa-user-times m-r-5"></i> Leave Household</a>
+                <a class="btn btn-sm btn-success m-b-10" ng-click="householdDetails.beginInvite()">New Invite</a>
+                <a class="btn btn-sm btn-warning m-b-10" ng-click="householdDetails.confirmLeave()">Leave Household</a>
             </span>
-            <span ng-show="householdDetails.panel == 'm'">{{householdDetails.household.Name}} Household - Members</span>
-            <span ng-show="householdDetails.panel == 'i'">New Invite</span>
-            <span ng-show="householdDetails.panel == 'l'">Leave Household?</span>
+            <span ng-show="householdDetails.panel == 'm'"><i class="fa fa-home"></i> {{householdDetails.household.Name}} Household - Members</span>
+            <span ng-show="householdDetails.panel == 'i'"><i class="fa fa-envelope"></i> New Invite</span>
+            <span ng-show="householdDetails.panel == 'l'"><i class="fa fa-user-times"></i> Leave Household?</span>
         </div>
         <div class="invoice-content">
             <hr />
